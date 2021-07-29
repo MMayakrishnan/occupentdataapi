@@ -46,7 +46,9 @@ public class BookingDetails {
 	@JoinColumn(name="room_no")
 	private Room room;
 	@JsonIgnore
-	private int customerId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="registrationId")
+	private User user;
 	private int numberOfGuests;
 	@OneToMany(cascade = CascadeType.ALL,
 	            fetch = FetchType.LAZY
